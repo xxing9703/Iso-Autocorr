@@ -1,7 +1,6 @@
 %-----  setup by user
 clear
 fname='g3p w 2h and 13c label.csv'; %file name from elmaven output
-start_col=16;  %starting col number of data block.
 tracers={'C','N','D','O'}; %tracer symbles (do not change)
 tracer_A=1;  % specify 1st tracer A: 13C=1, 15N=2, 2D=3, 18O=4
 tracer_B=3;  % specify 2nd tracer B
@@ -13,7 +12,7 @@ impurity_B=0.01;
 abundance=[0.0107,0.00364,0.00001,0.00187];
 ab_A=abundance(tracer_A);
 ab_B=abundance(tracer_B);
-
+start_col=find(strcmp(T.Properties.VariableNames,'parent'))+1;
 autogrouping=0;
 %%---------------------------------------------
 T=readtable(fname,'readvariablename',true); 
