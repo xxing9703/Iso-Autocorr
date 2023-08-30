@@ -12,11 +12,11 @@ impurity_B=0.01;
 abundance=[0.0107,0.00364,0.00001,0.00187];
 ab_A=abundance(tracer_A);
 ab_B=abundance(tracer_B);
-start_col=find(strcmp(T.Properties.VariableNames,'parent'))+1;
 autogrouping=0;
 %%---------------------------------------------
 T=readtable(fname,'readvariablename',true); 
 T=T(1:length(find([T.medMz]>0)),:); %cut empty rows.
+start_col=find(strcmp(T.Properties.VariableNames,'parent'))+1;
 sample_name=T.Properties.VariableNames(start_col:end)';
 grp_name=sample_name;
 if autogrouping==1
