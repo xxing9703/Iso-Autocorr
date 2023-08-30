@@ -1,10 +1,10 @@
 %-----  setup by user
 clear
-fname='example3.csv'; %file name from elmaven output
-start_col=15;  %starting col number of data block.
+fname='g3p w 2h and 13c label.csv'; %file name from elmaven output
+start_col=16;  %starting col number of data block.
 tracers={'C','N','D','O'}; %tracer symbles (do not change)
 tracer_A=1;  % specify 1st tracer A: 13C=1, 15N=2, 2D=3, 18O=4
-tracer_B=2;  % specify 2nd tracer B
+tracer_B=3;  % specify 2nd tracer B
 
 impurity_A=0.01;
 impurity_B=0.01;
