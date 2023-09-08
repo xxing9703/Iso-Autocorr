@@ -1,12 +1,14 @@
-function Autocorr(fname,impurity)
+function Autocorr(fname,impurity_A,impurity_B)
 if nargin==0
     [file,path]=uigetfile('*.csv');
     fname=fullfile(path,file);
-    impurity_A=0.01;  %default impurity
+    impurity_A=0.01;
     impurity_B=0.01;
 elseif nargin==1
-    impurity=[0.01,0.01,0.01,0.01];
-else
+    impurity_A=0.01;
+    impurity_B=0.01;  %default impurity
+elseif nargin==2
+    
 end
 
 %fname='13c15n and 2h labeling.csv'; %file name from elmaven output
@@ -60,7 +62,6 @@ for i=1:length(grpHead)-1
             trB=out(1);
             A_num=tp(trA);  % A num
             ab_A=abundance(trA);
-            impurity_A=impurity(trA);
             counts = AB_getcounts(lb,tr{trA},tr{trA});
             [fulldt,reduced_idx] = AB_getfulldt(dt,counts,A_num,0);
             [corr_abs,corr_pct]=isocorr_A(fulldt,A_num,ab_A,impurity_A);
@@ -73,9 +74,7 @@ for i=1:length(grpHead)-1
             A_num=tp(trA);  % A num
             B_num=tp(trB);  % B num
             ab_A=abundance(trA);
-            ab_B=abundance(trB); 
-            impurity_A=impurity(trA);
-            impurity_B=impurity(trB);
+            ab_B=abundance(trB);            
             counts = AB_getcounts(lb,tr{trA},tr{trB});            
             [fulldt,reduced_idx] = AB_getfulldt(dt,counts,A_num,B_num);
             [corr_abs,corr_pct]=isocorr_AB(fulldt,A_num,B_num,ab_A,ab_B,impurity_A,impurity_B);
