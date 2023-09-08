@@ -1,10 +1,11 @@
-%distin  input isotopmer distribution matrix, one sample per column
-%n: D number, m: O number
-%im_D: D impurity, im_O: O impurity;
-function [distout,mm,distout_pct]=isocorr_AB(distin,n,m,ab_A,ab_B,im_A,im_B)
+% A and B are two tracers
+% distin input isotopmer distribution matrix, one sample per column
+%n: A number, m: B number
+%im_A: A impurity, im_A: B impurity;
+function [distout,distout_pct]=isocorr_AB(distin,n,m,ab_A,ab_B,im_A,im_B)
 if nargin<6
-   im_A=0.01;  %impurity 2D 
-   im_B=0.01;  %impurity 18O
+   im_A=0.01;  %impurity for A 
+   im_B=0.01;  %impurity for B
 end
 
 %D matrix
