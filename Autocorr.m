@@ -2,8 +2,7 @@ function Autocorr(fname,impurity)
 if nargin==0
     [file,path]=uigetfile('*.csv');
     fname=fullfile(path,file);
-    impurity_A=0.01;  %default impurity
-    impurity_B=0.01;
+    impurity=[0.01,0.01,0.01,0.01]; %default impurities
 elseif nargin==1
     impurity=[0.01,0.01,0.01,0.01];
 else
@@ -13,6 +12,7 @@ end
 
 %-----------------------------------------------------
 tr={'C','N','D','O'}; %tracer symbles (do not change)
+tracer={'13C','15N','2D','18O'};
 % trA=1;  % specify 1st tracer A: 13C=1, 15N=2, 2D=3, 18O=4
 % trB=3;  % specify 2nd tracer B
 abundance=[0.0107,0.00364,0.00001,0.00187,0,0,0];
@@ -55,9 +55,13 @@ for i=1:length(grpHead)-1
         if isempty(out)
             trA=0;
             trB=0;
-        elseif length(out)==1
+            txt='no tracer';
+            corr_abs=dt;
+            corr_pct=ones(1,size(dt,2));
+        elseif length(out)==1            
             trA=out(1);
             trB=out(1);
+            txt=tracer{trA};
             A_num=tp(trA);  % A num
             ab_A=abundance(trA);
             impurity_A=impurity(trA);
@@ -67,9 +71,10 @@ for i=1:length(grpHead)-1
             corr_abs=corr_abs(reduced_idx,:); %shorttable for output
             corr_pct=corr_pct(reduced_idx,:); %shorttable for output            
        
-        elseif length(out)==2
+        elseif length(out)==2            
             trA=out(1);
             trB=out(2);
+            txt=[tracer{trA},'&',tracer{trB}];
             A_num=tp(trA);  % A num
             B_num=tp(trB);  % B num
             ab_A=abundance(trA);
@@ -93,6 +98,16 @@ for i=1:length(grpHead)-1
         meta(i).corr_abs=corr_abs; %shorttable for output
         meta(i).corr_pct=corr_pct; %shorttable for output
         meta(i).corr_tic=sum(corr_abs,1);
+
+        fprintf([num2str(i),'/',num2str(length(grpHead)-1),': '])
+        fprintf(txt);
+        [max_ppm,idx]=max(abs([A_sub.ppmDiff]));        
+        if max_ppm>5
+            fprintf([' -- warning: ppm error larger than expected:',num2str(max_ppm,'%.2f'),'\n']);
+        else
+            fprintf(' -- successful\n')
+        end
+       
 end 
 % -------- concat
 cat_abs=[];cat_pct=[];
