@@ -1,4 +1,4 @@
-function Autocorr(fname,impurity)
+function Autocorr(impurity)
 if nargin==0
     [file,path]=uigetfile('*.csv','MultiSelect','on');
     if iscell(file)
@@ -13,8 +13,6 @@ if nargin==0
      
     end
     impurity=[0.01,0.01,0.01,0.01]; %default impurities
-elseif nargin==1
-    impurity=[0.01,0.01,0.01,0.01];
 else
 end
 %-----------------------------------------------------
