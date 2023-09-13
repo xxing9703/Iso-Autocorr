@@ -1,5 +1,5 @@
-# Autocorr
-Autocorr integrates isocorr, isocorr13C15N, isocorrAB, and fully automates the natual isotope corrections. The main features are:
+# Iso-Autocorr 
+Iso-Autocorr (simply called Autocorr below) integrates isocorr, isocorr13C15N, isocorrAB, and fully automates the natual isotope corrections. The main features are:
 1.  It automatically determines the type of natual isotope corrections needed according to your input file (from Elmaven output), without the need of user's input.
 2.  It supports both single and double tracer corrections, including: 13C, 15N, 2D, 18O, 13C15N, 13C2D, 13C18O, 15N2D, 15N18O, 2D18O.
     <br> * for single tracer, Autocorr calls function isocorr_A(distin,n,ab_A,im_A)
@@ -14,7 +14,7 @@ Autocorr integrates isocorr, isocorr13C15N, isocorrAB, and fully automates the n
 
 
 # Input file & Important Note
-Autocorr is limited to use only for high-res fully-resolved case, where the exatracted data table with isotope labelings from El-maven is trustable.  Although it does sanity checks and generates warning messages, Autocorr is not responsible for identifying and correcting any abundance misreadings due to spectral contaminations, overlapping or missing peaks, incorrect settings in Elmaven (i.e, ppm window), misannotations etc.... 
+Autocorr is limited to use only for high-res fully-resolved case, where the exatracted data table from El-maven is the true abundance of the annotated isotope label species. It does not apply to low-res cases where peak overlappings are common and significant. Although it does sanity checks and generates warning messages, Autocorr is not responsible for identifying and correcting any abundance misreadings due to spectral contaminations, overlapping or missing peaks, incorrect settings in Elmaven (i.e, ppm window), misannotations etc.... 
  
 For example, it won't work in the following cases (usually will show large ppmDiff error):
  
