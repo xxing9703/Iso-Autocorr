@@ -14,13 +14,13 @@ Autocorr integrates isocorr, isocorr13C15N, isocorrAB, and fully automates the n
 
 
 # Input file & Important Note
-Autocorr is limited to use only for high-res fully-resolved case, where the exatracted data table with isotope labelings from El-maven is trustable.  Although it does sanity checks and generates warning messages based on ppmDiff, Autocorr is not responsible to correct for any abundance misreadings due to incorrect settings in Elmaven (i.e, ppm window), spectral contaminations, overlapping peaks, misannotations etc...,  
+Autocorr is limited to use only for high-res fully-resolved case, where the exatracted data table with isotope labelings from El-maven is trustable.  Although it does sanity checks and generates warning messages, Autocorr is not responsible for identifying and correcting any abundance misreadings due to spectral contaminations, overlapping or missing peaks, incorrect settings in Elmaven (i.e, ppm window), misannotations etc.... 
  
 For example, it won't work in the following cases (usually will show large ppmDiff error):
  
 -- Elmaven pulls out 18O signal but it is indeed the mixture of 18O and 13C2.  (no matter if 13C is one of the tracers) \
 -- Elmaven pulls out 2D signal but it is indeed the mixture of 2D and 13C.  (no matter if 13C is one of the tracers) \
--- Elmaven reads unexpected 2D-8 signal, likely due to contaminations from an unknown m/z peak.
+-- Elmaven reads unexpected 13C15N-label-6-2 signal, likely due to contaminations from an unknown peak at similar m/z
 
 
 # Usage
