@@ -29,3 +29,13 @@ In matlab,simply run Autocorr.m (or type Autocorr in command window). Once promp
 
 # Output
 If suscessful, you will see 'done' at the end of each file correction, and an output file "filename_cor.xlsx" will be generated. 
+
+# Examples
+See example input files along with the corrected ones in folder: \
+--example 1: 13C only \
+--example 2: 13C15N \
+--example 3: 13C15N (long list) \
+--example 4: 2D18O \
+--example 5: 13C2D \
+--example 6: mixed 13C15N and 2D
+
