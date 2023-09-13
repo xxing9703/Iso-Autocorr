@@ -1,20 +1,19 @@
 function Autocorr(impurity)
 if nargin==0
-    [file,path]=uigetfile('*.csv','MultiSelect','on');
-    if iscell(file)
-     fname=fullfile(path,file);     
-    else
-      if file==0
-          fprintf('user cancel selected\n');
-          return
-      else
-          fname{1}=fullfile(path,file);
-      end
-     
-    end
-    impurity=[0.01,0.01,0.01,0.01]; %default impurities
-else
+  impurity=[0.01,0.01,0.01,0.01]; %default impurities
 end
+[file,path]=uigetfile('*.csv','MultiSelect','on');
+if iscell(file)
+   fname=fullfile(path,file);     
+else
+   if file==0
+      fprintf('user cancel selected\n');
+      return
+   else
+      fname{1}=fullfile(path,file);
+   end
+end
+
 %-----------------------------------------------------
 tr={'C','N','D','O'}; %tracer symbles (do not change)
 tracer={'13C','15N','2D','18O'};
